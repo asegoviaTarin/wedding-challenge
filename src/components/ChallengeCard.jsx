@@ -22,6 +22,9 @@ export default function ChallengeCard({ guest, onComplete, onReject }) {
 
       {!guest.completed ? (
         <>
+          <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '16px' }}>
+            📸 <b>Nota:</b> Si tu reto implica foto o vídeo, mándaselo a los novios por WhatsApp para validarlo.
+          </p>
           <button onClick={handleComplete} className="success">
             ¡Lo he conseguido! ✅
           </button>

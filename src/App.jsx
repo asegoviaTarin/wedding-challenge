@@ -2,6 +2,7 @@ import Login from './components/Login';
 import ChallengeCard from './components/ChallengeCard';
 import ProgressBar from './components/ProgressBar';
 import CompletedList from './components/CompletedList';
+import SongRequest from './components/SongRequest';
 import { useGuests } from './hooks/useGuests';
 import './App.css';
 
@@ -14,7 +15,9 @@ function App() {
     isLoading, 
     login, 
     completeChallenge, 
-    rejectChallenge 
+    rejectChallenge,
+    songRequests,
+    addSongRequest
   } = useGuests();
 
   if (isLoading) {
@@ -33,6 +36,11 @@ function App() {
             onReject={rejectChallenge}
           />
           <CompletedList completedGuests={completedGuests} />
+          <SongRequest 
+            requests={songRequests} 
+            onAddRequest={addSongRequest} 
+            currentUser={currentUser} 
+          />
         </>
       )}
       

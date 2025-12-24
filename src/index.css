@@ -183,7 +183,17 @@ button.btn-text:hover {
   border: none;
 }
 
+.card.completed:hover {
+  background-color: var(--color-success);
+  /* Ensure it stays green on hover */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+
 .card.completed h3,
+.card.completed p {
+  color: white !important;
+}
 
 /* Progress Bar */
 .progress-bar-container {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ref, onValue, set, update } from 'firebase/database';
+import { ref, onValue, set, update, push } from 'firebase/database';
 import { database } from '../firebase';
 import { guests } from '../data/mockGuests';
 
@@ -76,6 +76,32 @@ export function useGuests() {
     setError('');
   };
 
+  // Song Requests Logic
+  const [songRequests, setSongRequests] = useState([]);
+
+  useEffect(() => {
+    const requestsRef = ref(database, 'requests');
+    const unsubscribe = onValue(requestsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setSongRequests(Object.values(data));
+      } else {
+        setSongRequests([]);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const addSongRequest = (songName, requesterName) => {
+    const newRequestRef = push(ref(database, 'requests'));
+    set(newRequestRef, {
+      song: songName,
+      requester: requesterName,
+      timestamp: new Date().toISOString()
+    });
+  };
+
   return {
     guestsData,
     currentUser,
@@ -86,6 +112,8 @@ export function useGuests() {
     isLoading,
     login,
     completeChallenge,
-    rejectChallenge
+    rejectChallenge,
+    songRequests,
+    addSongRequest
   };
 }
