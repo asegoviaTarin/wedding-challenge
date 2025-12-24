@@ -1,0 +1,37 @@
+:root {
+  /* Palette: Sage & Cream */
+  --color-primary: #5F8D4E;
+  /* Sage Green */
+  --color-secondary: #285430;
+  /* Forest Green */
+  --color-accent: #A4BE7B;
+  /* Light Green */
+  --color-bg: #FDFBF7;
+  /* Warm Cream */
+  --color-surface: #FFFFFF;
+  /* White */
+  --color-text: #2C3639;
+  /* Dark Charcoal */
+  --color-success: #4E9F3D;
+  /* Vibrant Green */
+  --color-error: #E15B5B;
+  /* Soft Red */
+
+  /* Typography */
+  --font-header: 'Fredoka', cursive;
+  --font-body: 'Nunito', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Borders & Effects */
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 2px 4px rgba(40, 84, 48, 0.05);
+  --shadow-md: 0 4px 12px rgba(40, 84, 48, 0.08);
+  --shadow-float: 0 10px 25px rgba(40, 84, 48, 0.1);
+}

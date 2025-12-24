@@ -28,35 +28,21 @@ export default function ChallengeCard({ guest, onComplete, onReject }) {
           <button 
             onClick={onReject} 
             className="secondary" 
-            style={{ 
-              marginTop: '12px', 
-              background: 'transparent', 
-              color: 'var(--color-secondary)', 
-              boxShadow: 'none',
-              border: '2px solid var(--color-secondary)',
-              opacity: 0.7
-            }}
+            style={{ marginTop: '12px' }}
           >
             Rechazar Desafío ❌
           </button>
         </>
       ) : (
         <>
-          <div className="card" style={{ backgroundColor: 'var(--color-success)', color: 'white' }}>
+          <div className="card completed">
             <h3>¡Misión Cumplida! 🎉</h3>
             <p>Has aportado tu granito de arena a la fiesta.</p>
           </div>
           <button 
             onClick={onReject} 
             className="btn-text" 
-            style={{ 
-              marginTop: '12px', 
-              background: 'transparent', 
-              color: 'var(--color-secondary)', 
-              boxShadow: 'none',
-              textDecoration: 'underline',
-              fontSize: '0.9rem'
-            }}
+            style={{ marginTop: '12px' }}
           >
             Volver / Salir
           </button>

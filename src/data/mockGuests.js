@@ -12,8 +12,14 @@ export const guests = [
     completed: false
   },
   {
-    phone: "600333444",
-    name: "Laura (Amiga Novia)",
+    phone: "617834768",
+    name: "Alba Segovia",
+    challenge: "Llegar a comer hoy antes de las 14:00.",
+    completed: false
+  },
+  {
+    phone: "649067636",
+    name: "Mario Segovia",
     challenge: "Brindar con el padrino y que diga '¡Vivan los novios!'",
     completed: false
   },

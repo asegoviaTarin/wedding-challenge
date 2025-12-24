@@ -23,18 +23,10 @@ export default function Login({ onLogin, error }) {
             value={phone}
             maxLength={9}
             onChange={(e) => setPhone(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '12px',
-              fontSize: '1.2rem',
-              borderRadius: '8px',
-              border: '2px solid var(--color-bg)',
-              textAlign: 'center'
-            }}
           />
         </div>
         
-        {error && <p style={{ color: 'red', marginBottom: '1rem' }}>{error}</p>}
+        {error && <p style={{ color: 'var(--color-error)', marginBottom: '1rem' }}>{error}</p>}
         
         <button type="submit">
           Ver mi Reto 🕵️‍♂️
