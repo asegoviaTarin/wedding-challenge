@@ -1,13 +1,13 @@
 export const guests = [
   {
     phone: "600123456",
-    name: "Tía Paqui",
+    name: "Tía Mari",
     challenge: "Conseguir que el novio baile 'La Macarena' contigo.",
     completed: false
   },
   {
     phone: "600111222",
-    name: "Primo Manolo",
+    name: "Primo Dani",
     challenge: "Hacerte un selfie con 5 personas que lleven corbata roja.",
     completed: false
   },
@@ -25,7 +25,7 @@ export const guests = [
   },
   {
     phone: "600555666",
-    name: "Carlos (Amigo Novio)",
+    name: "Monsal (Amigo Novio)",
     challenge: "Conseguir que la abuela cuente una anécdota de su boda.",
     completed: false
   },

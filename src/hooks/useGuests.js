@@ -37,6 +37,17 @@ export function useGuests() {
     return Math.round((completed / guestsData.length) * 100);
   }, [guestsData]);
 
+  const completedGuests = useMemo(() => {
+    return guestsData
+      .filter(g => g.completed)
+      .sort((a, b) => {
+        // Sort by time, oldest first (first to finish)
+        const dateA = a.completedAt ? new Date(a.completedAt) : new Date(0);
+        const dateB = b.completedAt ? new Date(b.completedAt) : new Date(0);
+        return dateA - dateB;
+      });
+  }, [guestsData]);
+
   const login = (phone) => {
     const guest = guestsData.find(g => g.phone === phone);
     if (guest) {
@@ -52,7 +63,10 @@ export function useGuests() {
     const guestIndex = guestsData.findIndex(g => g.phone === userPhone);
     if (guestIndex > -1) {
       const guestRef = ref(database, `guests/${guestIndex}`);
-      update(guestRef, { completed: true });
+      update(guestRef, {
+        completed: true,
+        completedAt: new Date().toISOString()
+      });
     }
   };
 
@@ -65,6 +79,7 @@ export function useGuests() {
   return {
     guestsData,
     currentUser,
+    completedGuests,
     completionPercentage,
     userPhone,
     error,

@@ -1,12 +1,14 @@
 import Login from './components/Login';
 import ChallengeCard from './components/ChallengeCard';
 import ProgressBar from './components/ProgressBar';
+import CompletedList from './components/CompletedList';
 import { useGuests } from './hooks/useGuests';
 import './App.css';
 
 function App() {
   const { 
     currentUser, 
+    completedGuests,
     completionPercentage, 
     error, 
     isLoading, 
@@ -24,11 +26,14 @@ function App() {
       {!currentUser ? (
         <Login onLogin={login} error={error} />
       ) : (
-        <ChallengeCard 
-          guest={currentUser} 
-          onComplete={completeChallenge}
-          onReject={rejectChallenge}
-        />
+        <>
+          <ChallengeCard 
+            guest={currentUser} 
+            onComplete={completeChallenge}
+            onReject={rejectChallenge}
+          />
+          <CompletedList completedGuests={completedGuests} />
+        </>
       )}
       
       <ProgressBar percentage={completionPercentage} />
