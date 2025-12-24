@@ -27,7 +27,10 @@ function App() {
   return (
     <div className="app-container">
       {!currentUser ? (
-        <Login onLogin={login} error={error} />
+        <>
+          <Login onLogin={login} error={error} />
+          <CompletedList completedGuests={completedGuests} />
+        </>
       ) : (
         <>
           <ChallengeCard 
@@ -35,7 +38,6 @@ function App() {
             onComplete={completeChallenge}
             onReject={rejectChallenge}
           />
-          <CompletedList completedGuests={completedGuests} />
           <SongRequest 
             requests={songRequests} 
             onAddRequest={addSongRequest} 

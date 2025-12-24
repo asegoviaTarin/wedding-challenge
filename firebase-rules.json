@@ -1,0 +1,23 @@
+{
+  "rules": {
+    ".read": true,
+    "guests": {
+      // Nadie puede borrar la lista entera de golpe
+      ".write": "false",
+      "$guest_index": {
+        // Un invitado individual puede actualizarse si...
+        // 1. Ya existe (no estamos creando invitados falsos)
+        // 2. Solo está tocando 'completed' o 'completedAt'
+        ".write": "data.exists() && newData.hasChildren(['completed'])"
+      }
+    },
+    "requests": {
+      // Cualquiera puede leer (para ver la lista)
+      ".read": true,
+      "$request_id": {
+        // Solo se puede CREAR nuevas peticiones (no borrar ni editar las de otros)
+        ".write": "!data.exists() && newData.exists()"
+      }
+    }
+  }
+}
