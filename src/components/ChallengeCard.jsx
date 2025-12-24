@@ -3,6 +3,7 @@ import confetti from 'canvas-confetti';
 
 export default function ChallengeCard({ guest, onComplete, onReject }) {
   const [showRejectModal, setShowRejectModal] = useState(false);
+  const [hasFile, setHasFile] = useState(false);
 
   const handleComplete = () => {
     confetti({
@@ -11,6 +12,10 @@ export default function ChallengeCard({ guest, onComplete, onReject }) {
       origin: { y: 0.6 }
     });
     onComplete();
+  };
+
+  const handleFileChange = (e) => {
+    setHasFile(e.target.files.length > 0);
   };
 
   return (
@@ -22,14 +27,15 @@ export default function ChallengeCard({ guest, onComplete, onReject }) {
           {guest.challenge}
         </p>
         
-        {!guest.completed && (
+        {!guest.completed && guest.requiresEvidence && (
           <div style={{ marginTop: '20px', borderTop: '1px solid #eee', paddingTop: '15px' }}>
             <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', color: '#666' }}>
-              📸 Sube tu evidencia:
+              📸 Sube tu evidencia (Obligatorio):
             </label>
             <input 
               type="file" 
-              accept="image/*"
+              accept="image/*,video/*"
+              onChange={handleFileChange}
               style={{
                 width: '100%',
                 padding: '10px',
@@ -45,10 +51,20 @@ export default function ChallengeCard({ guest, onComplete, onReject }) {
       {!guest.completed ? (
         <>
           <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '16px' }}>
-            📸 <b>Nota:</b> Si tu reto implica foto o vídeo, mándaselo a los novios por WhatsApp para validarlo.
+            {guest.requiresEvidence 
+              ? "📸 <b>Nota:</b> Debes seleccionar un archivo para validar el reto." 
+              : "📸 <b>Nota:</b> Si tu reto implica foto o vídeo, mándaselo a los novios por WhatsApp."}
           </p>
-          <button onClick={handleComplete} className="success">
-            ¡Lo he conseguido! ✅
+          <button 
+            onClick={handleComplete} 
+            className="success" 
+            disabled={guest.requiresEvidence && !hasFile}
+            style={{ 
+              opacity: (guest.requiresEvidence && !hasFile) ? 0.5 : 1, 
+              cursor: (guest.requiresEvidence && !hasFile) ? 'not-allowed' : 'pointer' 
+            }}
+          >
+            {guest.requiresEvidence && !hasFile ? 'Sube foto/vídeo primero 📸' : '¡Lo he conseguido! ✅'}
           </button>
           <button 
             onClick={() => setShowRejectModal(true)} 

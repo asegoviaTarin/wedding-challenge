@@ -1,15 +1,17 @@
 export const guests = [
   {
-    phone: "600123456",
-    name: "Tía Mari",
-    challenge: "Conseguir que el novio baile 'La Macarena' contigo.",
-    completed: false
+    name: 'Primo Dani',
+    phone: '600123456',
+    challenge: 'Consigue que la abuela baile una canción de reggaeton.',
+    completed: false,
+    requiresEvidence: true
   },
   {
-    phone: "600111222",
-    name: "Primo Dani",
-    challenge: "Hacerte un selfie con 5 personas que lleven corbata roja.",
-    completed: false
+    name: 'Tía María',
+    phone: '600654321',
+    challenge: 'Organiza una conga con al menos 10 personas.',
+    completed: false,
+    requiresEvidence: true
   },
   {
     phone: "617834768",
@@ -25,7 +27,7 @@ export const guests = [
   },
   {
     phone: "600555666",
-    name: "Monsal (Amigo Novio)",
+    name: "Victor (Amigo Novio)",
     challenge: "Conseguir que la abuela cuente una anécdota de su boda.",
     completed: false
   },
